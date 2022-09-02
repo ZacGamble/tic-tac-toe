@@ -95,7 +95,12 @@ import './index.css';
         let status;
         if (winner) {
             status = 'Winner: ' + winner;
-        } else {
+           
+        }  
+        else if (this.state.stepNumber === 9) {
+            status = "The game ends in a draw"
+            }  
+        else {
             status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O')
         }
       return (
@@ -117,6 +122,7 @@ import './index.css';
   
   // ========================================
   
+  // @ts-ignore
   const root = ReactDOM.createRoot(document.getElementById("root"));
   root.render(<Game />);
 
@@ -133,7 +139,7 @@ import './index.css';
     ];
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];
-      if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+      if (squares[a] === squares[b] && squares[a] === squares[c]) {
         return squares[a];
       }
     }
